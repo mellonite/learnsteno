@@ -35,7 +35,7 @@ export default {
   },
   watch: {
     input () {
-        if (this.input === this.currentWord[0])  {
+        if (this.input.trim() === this.currentWord[0])  {
             this.wordIndex++
             this.input = ''
             this.errorCount = 0
