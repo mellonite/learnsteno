@@ -3,21 +3,13 @@
     <navbar></navbar>
     <div class="container">
         <h1 class="is-size-2" style="margin-top:5rem">Lessons</h1>
-        <h2 class="is-size-4">Lesson 1: Fingers and Keys</h2>
-        <div style="margin-top:1rem" class="level">
-            <div class="has-text-centered level-item">
-                <div>
-                <div class="is-size-4 has-text-weight-light">One Syllable Words</div>
-                <router-link to="/lesson/1a" class="button is-primary is-rounded">Start</router-link>
-                </div>
+        <template v-for="lesson in lessons">
+            <h2 class="is-size-4">{{ lesson.name }}</h2>
+            <div v-for="exercise in lesson.exercises" class="level" style="max-width:25rem">
+                <div class="is-size-5">{{ exercise.name }}</div>
+                <router-link :to="'/lesson/' + exercise.code" class="button is-primary is-rounded">Start</router-link>
             </div>
-            <div class="has-text-centered level-item">
-                <div>
-                <div class="is-size-4 has-text-weight-light">Consonant Clusters</div>
-                <router-link to="/lesson/1b" class="button is-primary is-rounded">Start</router-link>
-                </div>
-            </div>
-        </div>
+        </template>
     </div>
 </div>
 </template>
@@ -29,6 +21,55 @@ export default {
   name: 'Lessons',
   components: {
       'navbar': NavBar
+  },
+  data () {
+      return {
+          lessons: [
+              {
+                  name: 'Lesson 1: Fingers and Keys',
+                  exercises: [
+                    {name: 'One syllable Words', code: '1a'},
+                    {name: 'Consonant Clusters', code: '1b'}
+                  ]
+              },
+              {
+                  name: 'Lesson 2: Steno Order',
+                  exercises: [
+                    {name: 'Where\'s the TRUFT?', code: '2a'},
+                    {name: 'Dropping Unstressed Vowels', code: '2b'},
+                    {name: 'Inversion', code: '2c'}
+                  ]
+
+              },
+              {
+                  name: 'Lesson 3: English Sounds',
+                  exercises: [
+                    {name: 'The Fifth Vowel Key', code: '3a-1'},
+                    {name: 'Long Vowel Chords', code: '3a-2'},
+                    {name: 'Dipthong Chords', code: '3a-3'},
+                    {name: 'Vowel Disambiguator Chords', code: '3a-4'},
+                    {name: 'The Missing Keys', code: '3b'},
+                    {name: 'The Remaining Single Letters', code: '3c-1'},
+                    {name: 'Including Sounds from Previous Lessons', code: '3c-2'},
+                    {name: 'Digraphs', code: '3d-1'},
+                    {name: 'Including Sounds from Previous Lessons', code: '3d-2'},
+                    {name: 'Common Compound Clusters', code: '3e-1'},
+                    {name: 'Including Sounds from Previous Lessons', code: '3d-2'},
+                    {name: 'Fingerspelling', code: '3f'},
+                  ]
+              },
+              {
+                  name: 'Lesson 4: Common Briefs',
+                  exercises: [
+                    {name: '1-20', code: '4a'},
+                    {name: '21-40', code: '4b'},
+                    {name: '41-60', code: '4c'},
+                    {name: '61-80', code: '4d'},
+                    {name: '81-100', code: '4e'},
+                  ]
+              }
+          ]
+      }
   }
 }
 </script>
