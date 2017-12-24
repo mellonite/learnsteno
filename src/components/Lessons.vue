@@ -5,10 +5,13 @@
         <h1 class="is-size-2" style="margin-top:5rem">Lessons</h1>
         <template v-for="lesson in lessons">
             <h2 class="is-size-4">{{ lesson.name }}</h2>
-            <div v-for="exercise in lesson.exercises" class="level" style="max-width:25rem">
-                <div class="is-size-5">{{ exercise.name }}</div>
-                <router-link :to="'/lesson/' + exercise.code" class="button is-primary is-rounded">Start</router-link>
-            </div>
+            <aside class="menu" style="max-width:25rem">
+                <ul class="menu-list">
+                    <li v-for="exercise in lesson.exercises">
+                        <router-link :to="'/lesson/' + exercise.code">{{ exercise.name }}</router-link>
+                    </li>
+                </ul>
+            </aside>
         </template>
     </div>
 </div>

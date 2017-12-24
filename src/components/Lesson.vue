@@ -6,20 +6,34 @@
         <h2 class="is-size-5">{{ lesson.description }}</h2>
         <progress class="progress is-primary" :value="progress" max="1"></progress>
         <!-- only render the lesson if there are still words left -->
-        <template v-if="wordIndex < lesson.words.length">
+        <template v-if="wordIndex < words.length">
             <h2 class="is-size-3 has-text-centered">{{ currentWord[0] }}</h2>
-            <b-tooltip type="is-dark" v-bind:class="{ 'is-invisible': wordErrors <= 1 }" :label="currentWord[1]">
-                <button style="margin-bottom:1rem" class="button">hint</button>
+            <b-tooltip type="is-black" position="is-right" v-bind:class="{ 'is-invisible': wordErrors <= 1 }" :label="currentWord[1]">
+                <button class="button">hint</button>
                 </b-tooltip>
-            <input class="input is-primary" type="text" v-model="input">
+            <input style="margin-top:1rem" class="input is-primary" type="text" v-model="input">
+            <!-- Options card -->
+            <div class="card" style="width:35rem;margin-top:2rem">
+                <div class="card-content">
+                    <div class="content">
+                        <b-checkbox v-model="random">Random</b-checkbox>
+                        <b-checkbox v-model="repeat">Repeat</b-checkbox>
+                        <b-checkbox v-model="showLayout">Show Plover Layout</b-checkbox>
+                    </div>
+                </div>
+                <div v-if="showLayout" class="card-image" style="padding:1rem">
+                    <img class="image" src="../assets/plover-layout.png">
+                </div>
+            </div>
         </template>
+
         <!-- render this bit if the lesson is finished -->
         <template v-else>
             <div class="level">
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Words per minute</p>
-                        <p class="title">{{ Math.round(lesson.words.length / ((endTime - startTime) / 1000 / 60)) }}</p>
+                        <p class="title">{{ Math.round(words.length / ((endTime - startTime) / 1000 / 60)) }}</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
@@ -49,12 +63,24 @@ export default {
   props: ['lessonName'],
   computed: {
     currentWord () {
-        if (this.wordIndex >= this.lesson.words.length)
+        if (this.wordIndex >= this.words.length)
             return ['', '']
 
-        return this.lesson.words[this.wordIndex]
+        return this.words[this.wordIndex]
     },
-    progress () { return this.wordIndex / this.lesson.words.length }
+    progress () { return this.wordIndex / this.words.length },
+    words () {
+        if (!this.random) return this.lesson.words
+        // shuffle the array of words if random is selected
+        else {
+            let words = this.lesson.words.slice(0)
+            for (let i = words.length -1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [words[i], words[j]] = [words[j], words[i]];
+            }
+            return words
+        }
+    }
   },
   data () {
       return {
@@ -65,7 +91,10 @@ export default {
         wordErrors: 0,
         lessonErrors: 0,
         startTime: null,
-        endTime: null
+        endTime: null,
+        repeat: false,
+        random: false,
+        showLayout: false
       }
   },
   watch: {
@@ -81,13 +110,15 @@ export default {
             // since we start with an empty input, we have to discard the first error
             this.wordErrors = -1
 
-            if (this.wordIndex=== this.lesson.words.length)
-                this.endTime = new Date()
+            if (this.wordIndex=== this.words.length) {
+                if (this.repeat) this.wordIndex = 0
+                else this.endTime = new Date()
+            }
         } else if (this.input === '') this.wordErrors++
     }
   },
   components: {
       'navbar': NavBar
-  }
+  },
 }
 </script>
