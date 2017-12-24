@@ -8,7 +8,7 @@ Learn Steno uses the `yarn` package manager. You can download it [here](https://
 
 ``` bash
 # install dependencies
-yarn install --ignore-scripts
+yarn install
 
 # serve with hot reload at localhost:8080
 yarn run dev
