@@ -1,11 +1,13 @@
 <template>
-<div class="ui fixed menu">
-    <div class="ui container">
-      <router-link to="/" class="header item">Learn Steno</router-link>
-      <router-link to="/" class="item">Lessons</router-link>
-      <router-link to="/about" class="item">About</router-link>
+<nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <router-link to="/" class="navbar-item is-size-5 has-text-weight-semibold	">Learn Steno</router-link>
+        <router-link to="/" class="navbar-item">Lessons</router-link>
+        <router-link to="/about" class="navbar-item">About</router-link>
+      </div>
     </div>
-  </div>
+</nav>
 </template>
 
 <script>

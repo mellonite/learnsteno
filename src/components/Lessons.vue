@@ -1,8 +1,8 @@
 <template>
 <div>
     <navbar></navbar>
-    <div class="ui text container">
-        <h1 style="margin-top:7rem" class="ui header">Lessons</h1>
+    <div class="container">
+        <h1 class="is-size-2" style="margin-top:5rem">Lessons</h1>
     </div>
 </div>
 </template>

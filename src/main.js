@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import '../node_modules/semantic-ui/dist/semantic.min.css'
 import VueResource from 'vue-resource'
+import Buefy from 'buefy'
 
+Vue.use(Buefy)
 Vue.use(VueResource)
 
 Vue.config.productionTip = false

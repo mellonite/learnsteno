@@ -2,13 +2,14 @@
 <div>
     <navbar></navbar>
     <div class="ui text container">
-        <h1 style="margin-top:7rem" class="ui header">{{ this.lesson.name }}</h1>
-        <span>{{ this.lesson.description }}</span>
-        <h2 class="ui center aligned header">{{ this.currentWord[0] }}</h2>
-        <div v-if="this.errorCount > 1" style="margin-bottom:1rem" class="ui button" :data-tooltip="this.currentWord[1]">hint</div>
-        <div class="ui input focus fluid">
-            <input type="text" v-model="input">
-        </div>
+        <h1 style="margin-top:7rem" class="is-size-2">{{ this.lesson.name }}</h1>
+        <h2 class="is-size-5">{{ this.lesson.description }}</h2>
+        <progress class="progress is-primary" :value="progress" max="1"></progress>
+        <h2 class="is-size-3 has-text-centered">{{ this.currentWord[0] }}</h2>
+        <b-tooltip type="is-dark" v-if="this.errorCount > 1" :label="currentWord[1]">
+            <button style="margin-bottom:1rem" class="button">hint</button>
+            </b-tooltip>
+        <input class="input is-primary" type="text" v-model="input">
     </div>
 </div>
 </template>

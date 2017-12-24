@@ -1,8 +1,8 @@
 <template>
 <div>
     <navbar></navbar>
-    <div class="ui text container">
-        <h1 style="margin-top:7rem" class="ui header">About Learn Steno</h1>
+    <div class="container">
+        <h1 style="margin-top:5rem" class="is-size-2">About Learn Steno</h1>
         <p>
             TODO: write about page
         </p>
