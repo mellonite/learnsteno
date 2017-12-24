@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item is-size-5 has-text-weight-semibold	">Learn Steno</router-link>
