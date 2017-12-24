@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar></navbar>
-    <div class="ui text container">
+    <div class="ui text container" style="max-width:70rem">
         <h1 style="margin-top:7rem" class="is-size-2">{{ lesson.name }}</h1>
         <h2 class="is-size-5">{{ lesson.description }}</h2>
         <progress class="progress is-primary" :value="progress" max="1"></progress>
@@ -31,7 +31,8 @@
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Total time</p>
-                        <p class="title">{{ Math.round((endTime - startTime) / 1000) }}</p>
+                        <!-- format minutes and seconds -->
+                        <p class="title">{{ Math.floor((endTime - startTime) / 1000 / 60) }}:{{ Math.round((endTime - startTime) / 1000 % 60) }}</p>
                     </div>
                 </div>
             </div>
