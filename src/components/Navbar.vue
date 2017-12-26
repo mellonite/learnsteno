@@ -4,6 +4,7 @@
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item is-size-5 has-text-weight-semibold	">Learn Steno</router-link>
         <router-link to="/" class="navbar-item">Lessons</router-link>
+        <router-link to="/drills" class="navbar-item">Drills</router-link>
         <router-link to="/about" class="navbar-item">About</router-link>
       </div>
     </div>

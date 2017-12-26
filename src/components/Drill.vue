@@ -8,7 +8,7 @@
         <!-- only render the lesson if there are still words left -->
         <template v-if="wordIndex < words.length">
             <h2 class="is-size-3 has-text-centered">{{ currentWord[0] }}</h2>
-            <b-tooltip type="is-black" position="is-right" v-bind:class="{ 'is-invisible': wordErrors <= 1 }" :label="currentWord[1]">
+            <b-tooltip type="is-black" position="is-right" v-bind:class="{ 'is-invisible': wordErrors < 1 }" :label="currentWord[1]">
                 <button class="button">hint</button>
                 </b-tooltip>
             <input style="margin-top:1rem" class="input is-primary" type="text" v-model="input">
@@ -59,8 +59,8 @@
 import NavBar from './Navbar.vue'
 
 export default {
-  name: 'Lesson',
-  props: ['lessonName'],
+  name: 'Drill',
+  props: ['drillName'],
   computed: {
     currentWord () {
         if (this.wordIndex >= this.words.length)
@@ -85,7 +85,7 @@ export default {
   data () {
       return {
         // please read this: https://vuejs-templates.github.io/webpack/static.html
-        lesson: require('../assets/lessons/' + this.lessonName + '.json'),
+        lesson: require('../assets/lessons/' + this.drillName + '.json'),
         wordIndex: 0,
         input: '',
         wordErrors: 0,

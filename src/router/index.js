@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Lessons from '@/components/Lessons'
+import Drills from '@/components/Drills'
 import About from '@/components/About'
-import Lesson from '@/components/Lesson'
+import Drill from '@/components/Drill'
+import Lessons from '@/components/Lessons'
 
 Vue.use(Router)
 
@@ -14,14 +15,19 @@ export default new Router({
       component: Lessons
     },
     {
+      path: '/drills',
+      name: 'Drills',
+      component: Drills
+    },
+    {
       path: '/about',
       name: 'About',
       component: About
     },
     {
-      path: '/lesson/:lessonName',
-      name: 'Lesson',
-      component: Lesson,
+      path: '/drill/:drillName',
+      name: 'Drill',
+      component: Drill,
       props: true
     }
   ]
