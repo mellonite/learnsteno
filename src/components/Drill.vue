@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div v-if="showLayout" class="card-image" style="padding:1rem">
-                    <img class="image" src="../assets/plover-layout.png">
+                    <img class="image" src="../assets/img/Fig1.svg">
                 </div>
             </div>
         </template>
