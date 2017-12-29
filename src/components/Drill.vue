@@ -1,16 +1,17 @@
 <template>
 <div>
     <navbar></navbar>
-    <div class="ui text container" style="max-width:70rem">
+    <div class="ui text container" style="max-width:50rem">
         <h1 style="margin-top:7rem" class="is-size-2">{{ lesson.name }}</h1>
         <h2 class="is-size-5">{{ lesson.description }}</h2>
         <progress class="progress is-primary" :value="progress" max="1"></progress>
         <!-- only render the lesson if there are still words left -->
         <template v-if="wordIndex < words.length">
-            <h2 class="is-size-3 has-text-centered">{{ currentWord[0] }}</h2>
-            <b-tooltip type="is-black" position="is-right" v-bind:class="{ 'is-invisible': wordErrors < 1 }" :label="currentWord[1]">
-                <button class="button">hint</button>
+            <div class="has-text-centered">
+                <b-tooltip type="is-black" position="is-right" :label="currentWord[1]">
+                    <h2 class="is-size-3 dotunder">{{ currentWord[0] }}</h2>
                 </b-tooltip>
+            </div>
             <input style="margin-top:1rem" class="input is-primary" type="text" v-model="input">
             <!-- Options card -->
             <div class="card" style="width:35rem;margin-top:2rem">
