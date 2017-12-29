@@ -4,6 +4,7 @@ import Drills from '@/components/Drills'
 import About from '@/components/About'
 import Drill from '@/components/Drill'
 import Lessons from '@/components/Lessons'
+import Lesson1 from '@/components/Lesson1'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       name: 'Drill',
       component: Drill,
       props: true
+    },
+    {
+      path:'/lesson/1',
+      name: 'Lesson1',
+      component: Lesson1
     }
   ]
 })

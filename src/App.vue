@@ -38,6 +38,15 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
+.stroke {
+  background-color: $dark;
+  color: $white;
+}
+
+.parmar {
+  margin-top:1rem;
+}
+
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
