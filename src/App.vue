@@ -33,6 +33,11 @@ $colors: (
     "twitter": ($twitter, $twitter-invert)
 );
 
+.dotunder {
+  border-bottom: .1rem dashed #4a4a4a;
+  display: inline;
+}
+
 // Links
 $link: $primary;
 $link-invert: $primary-invert;
