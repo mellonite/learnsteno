@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar></navbar>
-    <div class="container">
+    <div style="max-width:50rem" class="container">
         <h1 class="is-size-2" style="margin-top:5rem">Drills</h1>
         <template v-for="lesson in lessons">
             <h2 class="is-size-4">{{ lesson.name }}</h2>
