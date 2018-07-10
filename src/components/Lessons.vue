@@ -23,7 +23,7 @@ export default {
           lessons: [
               {
                   name: 'Lesson 1: Fingers and Keys',
-                  url: '1'
+                  url: '1a'
               },
               {
                   name: 'Lesson 2: Steno Order',

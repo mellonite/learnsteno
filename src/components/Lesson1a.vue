@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar></navbar>
-    <div style="max-width:60rem" class="container">
+    <div style="max-width:50rem;margin-bottom:10rem" class="container">
         <h1 style="margin-top:5rem" class="is-size-2">Lesson 1: Fingers and Keys</h1>
         <p class="parmar">
             <h2 class="is-size-4">The Keyboard</h2>
@@ -28,6 +28,14 @@
              for the finger responsible for the keys in that blue box.
         </p>
         <img class="image" src="../assets/img/Fig2.svg">
+        <p class="parmar">
+            As you can see, with the exception of the left little finger, each finger rests at the border between two keys; and that finger is used 
+            to press either (or both) of those keys. The right little finger has the additional responsibility of the <span class="stroke">D</span> 
+            and <span class="stroke">Z</span> keys, and the right 
+            forefinger is responsible for the asterisk. The thumbs rest on their sides, rather than on their pads. But you can easily see that unlike 
+            QWERTY keyboards, none of your fingers will ever move very far from their home positions. This helps with the blazingly fast typing speeds.
+        </p>
+        <router-link to="/lesson/1b" class="button is-primary is-rounded is-pulled-right" style="margin-top:1rem">Next</router-link>
     </div>
 </div>
 </template>
@@ -36,7 +44,7 @@
 import NavBar from './Navbar.vue'
 
 export default {
-  name: 'Lesson1',
+  name: 'Lesson1a',
   components: {
       'navbar': NavBar
   }
