@@ -2,10 +2,10 @@
 <div>
     <navbar></navbar>
     <div class="ui text container" style="max-width:50rem">
-        <h1 style="margin-top:7rem" class="is-size-2">{{ lesson.name }}</h1>
-        <h2 class="is-size-5">{{ lesson.description }}</h2>
+        <h1 style="margin-top:7rem" class="is-size-2">{{ drill.name }}</h1>
+        <h2 class="is-size-5">{{ drill.description }}</h2>
         <progress class="progress is-primary" :value="progress" max="1"></progress>
-        <!-- only render the lesson if there are still words left -->
+        <!-- only render the drill if there are still words left -->
         <template v-if="wordIndex < words.length">
             <div class="has-text-centered">
                 <b-tooltip type="is-black" position="is-right" :label="currentWord[1]">
@@ -28,7 +28,7 @@
             </div>
         </template>
 
-        <!-- render this bit if the lesson is finished -->
+        <!-- render this bit if the drill is finished -->
         <template v-else>
             <div class="level">
                 <div class="level-item has-text-centered">
@@ -40,7 +40,7 @@
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Missed strokes</p>
-                        <p class="title">{{ lessonErrors }}</p>
+                        <p class="title">{{ drillErrors }}</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
@@ -71,10 +71,10 @@ export default {
     },
     progress () { return this.wordIndex / this.words.length },
     words () {
-        if (!this.random) return this.lesson.words
+        if (!this.random) return this.drill.words
         // shuffle the array of words if random is selected
         else {
-            let words = this.lesson.words.slice(0)
+            let words = this.drill.words.slice(0)
             for (let i = words.length -1; i > 0; i--) {
                 let j = Math.floor(Math.random() * (i + 1));
                 [words[i], words[j]] = [words[j], words[i]];
@@ -83,19 +83,28 @@ export default {
         }
     }
   },
+  created () {
+      this.$pouch.get('drill' + this.drillName).then((doc) => {
+          this.dbDrillData = doc
+      }).catch((err) => {
+          if (err.name !== 'not_found') console.log(err)
+          this.dbDrillData._id = 'drill' + this.drillName
+      })
+  },
   data () {
       return {
         // please read this: https://vuejs-templates.github.io/webpack/static.html
-        lesson: require('../assets/lessons/' + this.drillName + '.json'),
+        drill: require('../assets/drills/' + this.drillName + '.json'),
         wordIndex: 0,
         input: '',
         wordErrors: 0,
-        lessonErrors: 0,
+        drillErrors: 0,
         startTime: null,
         endTime: null,
         repeat: false,
         random: false,
-        showLayout: false
+        showLayout: false,
+        dbDrillData: {}
       }
   },
   watch: {
@@ -106,7 +115,7 @@ export default {
         if (this.input.trim() === this.currentWord[0])  {
             this.wordIndex++
             this.input = ''
-            this.lessonErrors += Math.max(this.wordErrors,0)
+            this.drillErrors += Math.max(this.wordErrors,0)
             // we count errors be every time the input becomes empty
             // since we start with an empty input, we have to discard the first error
             this.wordErrors = -1
@@ -114,8 +123,18 @@ export default {
             if (this.wordIndex=== this.words.length) {
                 if (this.repeat) this.wordIndex = 0
                 else this.endTime = new Date()
+                this.saveData()
             }
         } else if (this.input === '') this.wordErrors++
+    }
+  },
+  methods: {
+      saveData () {
+          this.dbDrillData.wordErrors = Math.max(this.wordErrors,0)
+          this.dbDrillData.time = this.endTime - this.startTime
+          this.dbDrillData.wordsPerMinute =
+              Math.round(this.words.length / ((this.endTime - this.startTime) / 1000 / 60))
+          this.$pouch.put(this.dbDrillData)
     }
   },
   components: {

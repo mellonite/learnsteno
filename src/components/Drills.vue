@@ -3,11 +3,11 @@
     <navbar></navbar>
     <div style="max-width:50rem" class="container">
         <h1 class="is-size-2" style="margin-top:5rem">Drills</h1>
-        <template v-for="lesson in lessons">
-            <h2 class="is-size-4">{{ lesson.name }}</h2>
+        <template v-for="drill in drills">
+            <h2 class="is-size-4">{{ drill.name }}</h2>
             <aside class="menu" style="max-width:25rem">
                 <ul class="menu-list">
-                    <li v-for="exercise in lesson.exercises">
+                    <li v-for="exercise in drill.exercises">
                         <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}</router-link>
                     </li>
                 </ul>
@@ -27,7 +27,7 @@ export default {
   },
   data () {
       return {
-          lessons: [
+          drills: [
               {
                   name: 'Lesson 1: Fingers and Keys',
                   exercises: [
