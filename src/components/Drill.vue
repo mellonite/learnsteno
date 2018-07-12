@@ -30,7 +30,9 @@
 
         <!-- render this bit if the drill is finished -->
         <template v-else>
-            <h4 style="margin-bottom: .5rem" class="is-size-4 has-text-centered">Current Attempt</h4>
+            <!-- we only need to label this as current attempt, if there is more data -->
+            <h4 style="margin-bottom: .5rem" class="is-size-4 has-text-centered"
+                v-if="dbDrillData.keys().includes('wordsPerMinute')">Current Attempt</h4>
             <div class="level">
                 <div class="level-item has-text-centered">
                     <div>
@@ -52,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <template v-if="dbDrillData.wordsPerMinute != null">
+            <template v-if="dbDrillData.keys().includes('wordsPerMinute')">
                 <h4 style="margin-bottom: .5rem" class="is-size-4 has-text-centered">Overall Best</h4>
                 <div class="level">
                     <div class="level-item has-text-centered">
