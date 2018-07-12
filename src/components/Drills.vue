@@ -28,6 +28,13 @@ export default {
   components: {
       'navbar': NavBar
   },
+  created () {
+      this.$pouch.allDocs().then((docs) => {
+      this.completedDrills = docs.rows
+          .filter((row) => { return row.id.includes('drill') })
+          .map((row) => { return row.id.replace('drill', '') })
+      })
+  },
   data () {
       return {
           // list of drills that are finished, taken from the DB
