@@ -30,11 +30,12 @@
 
         <!-- render this bit if the drill is finished -->
         <template v-else>
+            <h4 style="margin-bottom: .5rem" class="is-size-4 has-text-centered">Current Attempt</h4>
             <div class="level">
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Words per minute</p>
-                        <p class="title">{{ Math.round(words.length / ((endTime - startTime) / 1000 / 60)) }}</p>
+                        <p class="title">{{ wordsPerMinute }}</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
@@ -47,10 +48,34 @@
                     <div>
                         <p class="heading">Total time</p>
                         <!-- format minutes and seconds -->
-                        <p class="title">{{ Math.floor((endTime - startTime) / 1000 / 60) }}:{{ Math.round((endTime - startTime) / 1000 % 60) }}</p>
+                        <p class="title">{{ formatDuration(endTime - startTime) }}</p>
                     </div>
                 </div>
             </div>
+            <template v-if="dbDrillData.wordsPerMinute != null">
+                <h4 style="margin-bottom: .5rem" class="is-size-4 has-text-centered">Overall Best</h4>
+                <div class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Words per minute</p>
+                            <p class="title">{{ Math.max(wordsPerMinute, dbDrillData.wordsPerMinute) }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Missed strokes</p>
+                            <p class="title">{{ Math.min(drillErrors, dbDrillData.drillErrors) }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Total time</p>
+                            <!-- format minutes and seconds -->
+                            <p class="title">{{ formatDuration(Math.min(endTime - startTime, dbDrillData.time)) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </template>
     </div>
 </div>
@@ -63,6 +88,9 @@ export default {
   name: 'Drill',
   props: ['drillName'],
   computed: {
+    wordsPerMinute () {
+      return Math.round(this.words.length / ((this.endTime - this.startTime) / 1000 / 60))
+    },
     currentWord () {
         if (this.wordIndex >= this.words.length)
             return ['', '']
@@ -130,12 +158,18 @@ export default {
   },
   methods: {
       saveData () {
-          this.dbDrillData.wordErrors = Math.max(this.wordErrors,0)
-          this.dbDrillData.time = this.endTime - this.startTime
-          this.dbDrillData.wordsPerMinute =
-              Math.round(this.words.length / ((this.endTime - this.startTime) / 1000 / 60))
+          this.dbDrillData.drillErrors = Math.max(Math.min(this.drillErrors,this.dbDrillData.drillErrors),0)
+          this.dbDrillData.time = Math.min(this.endTime - this.startTime, this.dbDrillData.time)
+          this.dbDrillData.wordsPerMinute = Math.max(this.wordsPerMinute, this.dbDrillData.wordsPerMinute)
           this.$pouch.put(this.dbDrillData)
-    }
+      },
+      formatDuration(timeInMS) {
+          let minutes = Math.floor(timeInMS / 1000 / 60)
+          let seconds = Math.round(timeInMS / 1000 % 60)
+          if (minutes < 10) minutes += '0'
+          if (seconds < 10) seconds += '0'
+          return minutes + ':' + seconds
+      }
   },
   components: {
       'navbar': NavBar

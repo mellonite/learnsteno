@@ -8,7 +8,10 @@
             <aside class="menu" style="max-width:25rem">
                 <ul class="menu-list">
                     <li v-for="exercise in drill.exercises">
-                        <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}</router-link>
+                        <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}
+                          <template v-if="completedDrills.includes(exercise.code)">
+                              <font-awesome-icon style="color: green" icon="check"></font-awesome-icon>
+                          </template></router-link>
                     </li>
                 </ul>
             </aside>
@@ -22,11 +25,20 @@ import NavBar from './Navbar.vue'
 
 export default {
   name: 'Drills',
+  created () {
+      this.$pouch.allDocs().then((docs) => {
+          this.completedDrills = docs.rows
+              .filter((row) => { return row.id.includes('drill') })
+              .map((row) => { return row.id.replace('drill', '') })
+      })
+  },
   components: {
       'navbar': NavBar
   },
   data () {
       return {
+          // list of drills that are finished, taken from the DB
+          completedDrills: [],
           drills: [
               {
                   name: 'Lesson 1: Fingers and Keys',
