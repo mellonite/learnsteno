@@ -1,14 +1,17 @@
 <template>
 <div>
     <navbar></navbar>
-    <div class="container">
+    <div style="max-width:50rem" class="container">
         <h1 class="is-size-2" style="margin-top:5rem">Drills</h1>
-        <template v-for="lesson in lessons">
-            <h2 class="is-size-4">{{ lesson.name }}</h2>
+        <template v-for="drill in drills">
+            <h2 class="is-size-4">{{ drill.name }}</h2>
             <aside class="menu" style="max-width:25rem">
                 <ul class="menu-list">
-                    <li v-for="exercise in lesson.exercises">
-                        <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}</router-link>
+                    <li v-for="exercise in drill.exercises">
+                        <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}
+                          <template v-if="completedDrills.includes(exercise.code)">
+                              <font-awesome-icon style="color: green" icon="check"></font-awesome-icon>
+                          </template></router-link>
                     </li>
                 </ul>
             </aside>
@@ -27,7 +30,9 @@ export default {
   },
   data () {
       return {
-          lessons: [
+          // list of drills that are finished, taken from the DB
+          completedDrills: [],
+          drills: [
               {
                   name: 'Lesson 1: Fingers and Keys',
                   exercises: [
