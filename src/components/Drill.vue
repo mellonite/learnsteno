@@ -20,6 +20,7 @@
                         <b-checkbox v-model="random">Random</b-checkbox>
                         <b-checkbox v-model="repeat">Repeat</b-checkbox>
                         <b-checkbox v-model="showLayout">Show Plover Layout</b-checkbox>
+                        <b-checkbox v-model="soundEffects">Sound Effects</b-checkbox>
                     </div>
                 </div>
                 <div v-if="showLayout" class="card-image" style="padding:1rem">
@@ -134,6 +135,8 @@ export default {
         repeat: false,
         random: false,
         showLayout: false,
+        soundEffects: true,
+        correctSound: new Audio(require('../assets/audio/correct.ogg')),
         dbDrillData: {}
       }
   },
@@ -149,6 +152,8 @@ export default {
             // we count errors be every time the input becomes empty
             // since we start with an empty input, we have to discard the first error
             this.wordErrors = -1
+
+            if (this.soundEffects) this.correctSound.play()
 
             if (this.wordIndex=== this.words.length) {
                 if (this.repeat) this.wordIndex = 0
