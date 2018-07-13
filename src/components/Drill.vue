@@ -115,12 +115,11 @@ export default {
     }
   },
   created () {
-      correctSound.volume = .8
+      this.correctSound.volume = .8
       this.$pouch.get('drill' + this.drillName).then((doc) => {
           this.dbDrillData = doc
       }).catch((err) => {
           if (err.name !== 'not_found') console.log(err)
-          this.dbDrillData._id = 'drill' + this.drillName
       })
   },
   data () {
@@ -166,10 +165,22 @@ export default {
   },
   methods: {
       saveData () {
-          this.dbDrillData.drillErrors = Math.max(Math.min(this.drillErrors,this.dbDrillData.drillErrors),0)
-          this.dbDrillData.time = Math.min(this.endTime - this.startTime, this.dbDrillData.time)
-          this.dbDrillData.wordsPerMinute = Math.max(this.wordsPerMinute, this.dbDrillData.wordsPerMinute)
-          this.$pouch.put(this.dbDrillData)
+          // we need to compare all our new data to see if it's a new best data
+          // but only if there is existing data
+          if (Object.keys(this.dbDrillData).includes('time')) {
+              this.dbDrillData.drillErrors = Math.max(Math.min(this.drillErrors,this.dbDrillData.drillErrors),0)
+              this.dbDrillData.time = Math.min(this.endTime - this.startTime, this.dbDrillData.time)
+              this.dbDrillData.wordsPerMinute = Math.max(this.wordsPerMinute, this.dbDrillData.wordsPerMinute)
+              this.$pouch.put(this.dbDrillData)
+          } else {
+            let drillData = {
+                '_id': 'drill' + this.drillName,
+                'drillErrors': Math.max(this.drillErrors, 0),
+                'time': this.endTime - this.startTime,
+                'wordsPerMinute': this.wordsPerMinute
+            }
+            this.$pouch.put(drillData)
+          }
       },
       formatDuration(timeInMS) {
           let minutes = Math.floor(timeInMS / 1000 / 60)
