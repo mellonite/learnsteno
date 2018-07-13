@@ -115,6 +115,7 @@ export default {
     }
   },
   created () {
+      correctSound.volume = .8
       this.$pouch.get('drill' + this.drillName).then((doc) => {
           this.dbDrillData = doc
       }).catch((err) => {
