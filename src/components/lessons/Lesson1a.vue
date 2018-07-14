@@ -9,7 +9,7 @@
         </p>
         <p class="parmar">
             What is this thing? Some letters seem to be missing, others seem to be duplicated. It looks weird.
-            <img class="image" src="../assets/img/Fig1.svg">
+            <img class="image" src="../../assets/img/Fig1.svg">
         </p>
         <p class="parmar">
             The most immediately useful thing to know is that all the consonant keys map to their corresponding consonant sounds.
@@ -27,7 +27,7 @@
             In the following diagram, the blue boxes contain the keys associated with each finger, and the tan circles represent the home position
              for the finger responsible for the keys in that blue box.
         </p>
-        <img class="image" src="../assets/img/Fig2.svg">
+        <img class="image" src="../../assets/img/Fig2.svg">
         <p class="parmar">
             As you can see, with the exception of the left little finger, each finger rests at the border between two keys; and that finger is used
             to press either (or both) of those keys. The right little finger has the additional responsibility of the <span class="stroke">D</span>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import NavBar from './Navbar.vue'
+import NavBar from '../Navbar.vue'
 
 export default {
   name: 'Lesson1a',

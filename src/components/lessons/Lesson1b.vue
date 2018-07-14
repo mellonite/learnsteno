@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import NavBar from './Navbar.vue'
+import NavBar from '../Navbar.vue'
 
 export default {
   name: 'Lesson1b',

@@ -4,11 +4,11 @@ import Drills from '@/components/Drills'
 import About from '@/components/About'
 import Drill from '@/components/Drill'
 import Lessons from '@/components/Lessons'
-import Lesson1a from '@/components/Lesson1a'
-import Lesson1b from '@/components/Lesson1b'
-import Lesson1c from '@/components/Lesson1c'
-import Lesson1d from '@/components/Lesson1d'
-import Lesson1e from '@/components/Lesson1e'
+import Lesson1a from '@/components/lessons/Lesson1a'
+import Lesson1b from '@/components/lessons/Lesson1b'
+import Lesson1c from '@/components/lessons/Lesson1c'
+import Lesson1d from '@/components/lessons/Lesson1d'
+import Lesson1e from '@/components/lessons/Lesson1e'
 
 Vue.use(Router)
 
