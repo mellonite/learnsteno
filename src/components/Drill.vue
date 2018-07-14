@@ -185,7 +185,6 @@ export default {
       formatDuration(timeInMS) {
           let minutes = Math.floor(timeInMS / 1000 / 60)
           let seconds = Math.round(timeInMS / 1000 % 60)
-          if (minutes < 10) minutes += '0'
           if (seconds < 10) seconds += '0'
           return minutes + ':' + seconds
       }
