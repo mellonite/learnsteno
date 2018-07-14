@@ -7,6 +7,9 @@
         <router-link to="/drills" class="navbar-item">Drills</router-link>
         <router-link to="/practice" class="navbar-item">Practice</router-link>
         <router-link to="/about" class="navbar-item">About</router-link>
+        <a target="_blank" href="https://github.com/mellonite/learnsteno" class="navbar-item">
+          <font-awesome-icon style="margin-right: .2rem" class="fa-icon" :icon="['fab', 'github']"></font-awesome-icon>
+          Contribute</a>
       </div>
     </div>
 </nav>
