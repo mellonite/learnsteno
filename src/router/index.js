@@ -4,6 +4,7 @@ import Drills from '@/components/Drills'
 import About from '@/components/About'
 import Drill from '@/components/Drill'
 import Lessons from '@/components/Lessons'
+import Practice from '@/components/Practice'
 import Lesson1a from '@/components/lessons/Lesson1a'
 import Lesson1b from '@/components/lessons/Lesson1b'
 import Lesson1c from '@/components/lessons/Lesson1c'
@@ -23,6 +24,11 @@ export default new Router({
       path: '/drills',
       name: 'Drills',
       component: Drills
+    },
+    {
+      path: '/practice',
+      name: 'Practice',
+      component: Practice
     },
     {
       path: '/about',

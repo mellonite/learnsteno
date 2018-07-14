@@ -125,7 +125,7 @@ export default {
   data () {
       return {
         // please read this: https://vuejs-templates.github.io/webpack/static.html
-        drill: require('../assets/drills/' + this.drillName + '.json'),
+        drill: require('../assets/practicedata/drills/' + this.drillName + '.json'),
         wordIndex: 0,
         input: '',
         wordErrors: 0,

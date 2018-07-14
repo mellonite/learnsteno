@@ -2,7 +2,7 @@
 <div>
     <navbar></navbar>
     <div style="max-width:50rem" class="container">
-        <h1 class="is-size-2" style="margin-top:5rem">Lessons</h1>
+        <h1 class="is-size-2" style="margin-top:5rem">Practice</h1>
         <template v-for="lesson in lessons">
             <div><router-link class="is-size-4" :to="'/lesson/' + lesson.url">{{ lesson.name }}</router-link></div>
         </template>
@@ -14,7 +14,7 @@
 import NavBar from './Navbar.vue'
 
 export default {
-  name: 'Lessons',
+  name: 'Practice',
   components: {
       'navbar': NavBar
   },
