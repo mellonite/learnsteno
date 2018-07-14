@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Drills from '@/components/Drills'
 import About from '@/components/About'
 import Drill from '@/components/Drill'
+import Transcription from '@/components/Transcription'
 import Lessons from '@/components/Lessons'
 import Practice from '@/components/Practice'
 import Lesson1a from '@/components/lessons/Lesson1a'
@@ -41,6 +42,13 @@ export default new Router({
       component: Drill,
       props: true
     },
+    {
+      path: '/practice/transcription/:transcrptionName',
+      name: 'Transcription',
+      component: Transcription,
+      props: true
+    },
+
     {
       path:'/lesson/1a',
       name: 'Lesson1a',
