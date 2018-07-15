@@ -16,7 +16,7 @@ in_file = open(in_name, 'r')
 output = {'wordcount': 0, 'sentences': []}
 for line in in_file:
     sentence = []
-    sentence.append(line.strip().split(' ', maxsplit=1)[0] + '.opus')
+    sentence.append(line.strip().split(' ', maxsplit=1)[0])
     sentence.append(line.strip().split(' ', maxsplit=1)[1])
     output['sentences'].append(sentence)
     output['wordcount'] += len(line.strip().split(' ', maxsplit=1)[1].split(' '))
