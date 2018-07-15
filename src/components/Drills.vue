@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar page=drills></navbar>
+    <navbar page=practice></navbar>
     <div class="container page">
       <div class="columns">
         <div class="column">
