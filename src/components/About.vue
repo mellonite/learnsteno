@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar></navbar>
+    <navbar page='about'></navbar>
     <div class="container">
         <h1 style="margin-top:5rem" class="is-size-2">About Learn Steno</h1>
         <p>

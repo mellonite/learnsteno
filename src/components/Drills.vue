@@ -1,8 +1,7 @@
 <template>
 <div>
-    <navbar></navbar>
-    <div style="max-width:50rem" class="container">
-        <h1 class="is-size-2" style="margin-top:5rem">Drills</h1>
+    <navbar page=drills></navbar>
+    <div style="margin-top:5rem" class="container">
         <template v-for="drill in drills">
             <h2 class="is-size-4">{{ drill.name }}</h2>
             <aside class="menu" style="max-width:25rem">

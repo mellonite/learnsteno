@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar></navbar>
+    <navbar page='lessons'></navbar>
     <div class="container">
       <div class="columns" style="margin-top:5rem">
         <div class="column">
