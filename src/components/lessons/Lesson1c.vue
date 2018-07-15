@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
-    <div style="max-width:50rem;margin-bottom:10rem" class="container content">
+    <div style="margin-bottom:10rem" class="container content narrow">
         <h1 style="margin-top:5rem" class="is-size-2">Lesson 1: Fingers and Keys</h1>
         <p class="parmar">
           <h2>Stroking Your First Words</h2>

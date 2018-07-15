@@ -1,20 +1,45 @@
 <template>
 <div>
     <navbar page=drills></navbar>
-    <div style="margin-top:5rem" class="container">
-        <template v-for="drill in drills">
-            <h2 class="is-size-4">{{ drill.name }}</h2>
-            <aside class="menu" style="max-width:25rem">
-                <ul class="menu-list">
-                    <li v-for="exercise in drill.exercises">
-                        <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}
-                          <template v-if="completedDrills.includes(exercise.code)">
-                              <font-awesome-icon style="color: green" icon="check"></font-awesome-icon>
-                          </template></router-link>
-                    </li>
-                </ul>
-            </aside>
-        </template>
+    <div class="container narrow" style="margin-top:5rem">
+      <div class="columns">
+        <div class="column">
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+              <template v-for="drill in drills">
+                <h2 class="is-size-4">{{ drill.name }}</h2>
+                <aside class="menu" style="max-width:25rem">
+                    <ul class="menu-list">
+                        <li v-for="exercise in drill.exercises">
+                            <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}
+                              <template v-if="completedDrills.includes(exercise.code)">
+                                  <font-awesome-icon style="color: green" icon="check"></font-awesome-icon>
+                              </template></router-link>
+                        </li>
+                    </ul>
+                </aside>
+              </template>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <div class="content">
+                  <p class="title">Daily Goal</p>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+                    <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
 </template>

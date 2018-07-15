@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar page='about'></navbar>
-    <div class="container">
+    <div class="container narrow">
         <h1 style="margin-top:5rem" class="is-size-2">About Learn Steno</h1>
         <p>
           Learn Steno was developed by Mel Griffin and Ian Mcxa. It is open source and available on <a href="https://github.com/mellonite/learnsteno">github</a>.

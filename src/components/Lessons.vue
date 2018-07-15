@@ -1,8 +1,8 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
-    <div class="container">
-      <div class="columns" style="margin-top:5rem">
+    <div class="container narrow" style="margin-top:5rem">
+      <div class="columns">
         <div class="column">
           <div class="tile is-ancestor">
             <div class="tile is-vertical">
@@ -21,38 +21,34 @@
                     </div>
                   </article>
                 </div>
-                <div class="tile is-8 is-vertical">
-                  <div class="tile">
-                    <div class="tile is-parent">
-                      <article class="tile is-child box">
-                        <p class="title">Lesson 2</p>
-                        <p class="subtitle">Steno Order</p>
-                        <div class="content">
-                          <p>
-                          </p>
-                          <div class="level-item is-centered">
-                            <router-link to="/lesson/2" class="button is-primary" disabled>Start</router-link>
-                          </div>
+                  <div class="tile is-parent">
+                    <article class="tile is-child box">
+                      <p class="title">Lesson 2</p>
+                      <p class="subtitle">Steno Order</p>
+                      <div class="content">
+                        <p>
+                        </p>
+                        <div class="level-item is-centered">
+                          <router-link to="/lesson/2" class="button is-primary" disabled>Start</router-link>
                         </div>
-                      </article>
-                    </div>
-                    <div class="tile is-parent">
-                      <article class="tile is-child box">
-                        <p class="title">Lesson 3</p>
-                        <p class="subtitle">English Sounds</p>
-                        <div class="content">
-                          <p>
-                          </p>
-                          <div class="level-item is-centered">
-                            <router-link to="/lesson/3" class="button is-primary" disabled>Start</router-link>
-                          </div>
-                        </div>
-                      </article>
-                    </div>
+                      </div>
+                    </article>
                   </div>
-                </div>
               </div>
               <div class="tile">
+                <div class="tile is-parent">
+                  <article class="tile is-child box">
+                    <p class="title">Lesson 3</p>
+                    <p class="subtitle">English Sounds</p>
+                    <div class="content">
+                      <p>
+                      </p>
+                      <div class="level-item is-centered">
+                        <router-link to="/lesson/3" class="button is-primary" disabled>Start</router-link>
+                      </div>
+                    </div>
+                  </article>
+                </div>
                 <div class="tile is-parent">
                   <article class="tile is-child box">
                     <p class="title">Lesson 4</p>
@@ -66,41 +62,39 @@
                     </div>
                   </article>
                 </div>
-                <div class="tile is-8 is-vertical">
-                  <div class="tile">
-                    <div class="tile is-parent">
-                      <article class="tile is-child box">
-                        <p class="title">Lesson 5</p>
-                        <p class="subtitle">Prefix and Suffix Strokes</p>
-                        <div class="content">
-                          <p>
-                          </p>
-                          <div class="level-item is-centered">
-                            <router-link to="/lesson/5" class="button is-primary" disabled>Start</router-link>
-                          </div>
-                        </div>
-                      </article>
+              </div>
+              <div class="tile">
+                <div class="tile is-parent">
+                  <article class="tile is-child box">
+                    <p class="title">Lesson 5</p>
+                    <p class="subtitle">Prefix and Suffix Strokes</p>
+                    <div class="content">
+                      <p>
+                      </p>
+                      <div class="level-item is-centered">
+                        <router-link to="/lesson/5" class="button is-primary" disabled>Start</router-link>
+                      </div>
                     </div>
-                    <div class="tile is-parent">
-                      <article class="tile is-child box">
-                        <p class="title">Lesson 6</p>
-                        <p class="subtitle">Prefix/Suffix Alternatives</p>
-                        <div class="content">
-                          <p>
-                          </p>
-                          <div class="level-item is-centered">
-                            <router-link to="/lesson/6" class="button is-primary" disabled>Start</router-link>
-                          </div>
-                        </div>
-                      </article>
+                  </article>
+                </div>
+                <div class="tile is-parent">
+                  <article class="tile is-child box">
+                    <p class="title">Lesson 6</p>
+                    <p class="subtitle">Prefix/Suffix Alternatives</p>
+                    <div class="content">
+                      <p>
+                      </p>
+                      <div class="level-item is-centered">
+                        <router-link to="/lesson/6" class="button is-primary" disabled>Start</router-link>
+                      </div>
                     </div>
-                  </div>
+                  </article>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="column is-one-quarter">
+        <div class="column is-one-third">
           <div class="tile is-ancestor">
             <div class="tile is-parent">
               <article class="tile is-child box">

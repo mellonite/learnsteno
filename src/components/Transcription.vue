@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar></navbar>
+    <navbar page='practice'></navbar>
     <div class="ui text container" style="max-width:50rem">
         <progress class="progress is-primary" :value="progress" max="1"></progress>
         <!-- only render the drill if there are still words left -->

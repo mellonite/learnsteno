@@ -52,6 +52,10 @@ $link-focus-border: $primary;
   margin-top:1rem;
 }
 
+.container.narrow {
+  max-width:65rem
+}
+
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
