@@ -4,7 +4,17 @@
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item is-size-5 has-text-weight-semibold	">Learn Steno</router-link>
         <router-link to="/" class="navbar-item" v-bind:class="{ 'is-active': page === 'lessons' }">Lessons</router-link>
-        <router-link to="/practice" class="navbar-item" v-bind:class="{ 'is-active': page === 'practice' }">Practice</router-link>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+            <router-link slot="trigger" to="/practice" class="navbar-link"
+                v-bind:class="{ 'is-active': page === 'practice' }">Practice</router-link>
+
+            <div class="navbar-dropdown">
+                <router-link class="navbar-item" to="/practice/drills">Lesson Drills</router-link>
+                <router-link class="navbar-item" to="/practice/transcription/251-118436">Transcription</router-link>
+            </div>
+        </div>
+
         <router-link to="/about" class="navbar-item" v-bind:class="{ 'is-active': page === 'about' }">About</router-link>
         <a target="_blank" href="https://github.com/mellonite/learnsteno" class="navbar-item">
           <font-awesome-icon style="margin-right: .2rem" class="fa-icon" :icon="['fab', 'github']"></font-awesome-icon>
