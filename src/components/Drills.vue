@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar page=drills></navbar>
+    <navbar page=practice></navbar>
     <div class="container page">
       <div class="columns">
         <div class="column">
@@ -12,7 +12,7 @@
                 <aside class="menu" style="max-width:25rem">
                     <ul class="menu-list">
                         <li v-for="exercise in drill.exercises">
-                            <router-link :to="'/drill/' + exercise.code">{{ exercise.name }}
+                            <router-link :to="'/practice/drill/' + exercise.code">{{ exercise.name }}
                               <template v-if="completedDrills.includes(exercise.code)">
                                   <font-awesome-icon style="color: green" icon="check"></font-awesome-icon>
                               </template></router-link>

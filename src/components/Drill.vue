@@ -1,6 +1,6 @@
 <template>
 <div>
-    <navbar page=drills></navbar>
+    <navbar page=practice></navbar>
     <div class="ui text container page">
         <h1 class="is-size-2">{{ drill.name }}</h1>
         <h2 class="is-size-5">{{ drill.description }}</h2>

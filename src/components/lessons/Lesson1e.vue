@@ -14,7 +14,7 @@
             </p>
           </div>
           <router-link to="/lesson/1d" class="button is-primary is-pulled-left">Previous</router-link>
-          <router-link to="/drill/1a" class="button is-primary is-pulled-right">Next</router-link>
+          <router-link to="/practice/drill/1a" class="button is-primary is-pulled-right">Next</router-link>
         </div>
         <div class="column is-one-third">
           <lessonmenu></lessonmenu>
