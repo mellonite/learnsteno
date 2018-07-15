@@ -1,6 +1,18 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
+    <section class="hero is-warning is-small">
+      <div class="hero-body">
+        <div class="container narrow" style="margin-top:3em">
+          <h1 class="title">
+            Under Construction
+          </h1>
+          <h2 class="subtitle">
+            Learn Steno is in a very early stage. There will be a lot of missing content. If you'd like to contribute or just leave feedback, check out our github in the contribute tab.
+          </h2>
+        </div>
+      </div>
+    </section>
     <div class="container page">
       <div class="columns">
         <div class="column">
