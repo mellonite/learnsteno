@@ -53,7 +53,11 @@ $link-focus-border: $primary;
 }
 
 .container.narrow {
-  max-width:65rem
+  max-width:65rem;
+}
+
+.container.narrow.page{
+  margin-top:5rem
 }
 
 // Import Bulma and Buefy styles
