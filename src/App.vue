@@ -52,8 +52,19 @@ $link-focus-border: $primary;
   margin-top:1rem;
 }
 
+.container.page,
+.container.lesson,
 .container.narrow {
-  max-width:65rem
+  max-width:65rem;
+}
+
+.container.lesson,
+.container.page{
+  margin-top:5rem
+}
+
+.container.lesson{
+  margin-bottom:10rem
 }
 
 // Import Bulma and Buefy styles

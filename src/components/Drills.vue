@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar page=drills></navbar>
-    <div class="container narrow" style="margin-top:5rem">
+    <div class="container page">
       <div class="columns">
         <div class="column">
           <div class="tile is-ancestor">

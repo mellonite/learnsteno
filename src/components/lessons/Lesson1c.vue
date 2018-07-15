@@ -1,8 +1,8 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
-    <div style="margin-bottom:10rem" class="container content narrow">
-        <h1 style="margin-top:5rem" class="is-size-2">Lesson 1: Fingers and Keys</h1>
+    <div class="container content lesson">
+        <h1 class="is-size-2">Lesson 1: Fingers and Keys</h1>
         <p class="parmar">
           <h2>Stroking Your First Words</h2>
           Now you're ready to start typing words. Have your NKRO keyboard in front of you, and activate the Plover software. Once you're set up, do the following steps:

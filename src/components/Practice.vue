@@ -1,8 +1,8 @@
 <template>
 <div>
     <navbar page='practice'></navbar>
-    <div class="container narrow">
-        <h1 class="is-size-2" style="margin-top:5rem">Practice</h1>
+    <div class="container page">
+        <h1 class="is-size-2">Practice</h1>
         <template v-for="lesson in lessons">
             <div><router-link class="is-size-4" :to="'/lesson/' + lesson.url">{{ lesson.name }}</router-link></div>
         </template>

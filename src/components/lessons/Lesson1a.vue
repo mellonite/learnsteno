@@ -1,8 +1,9 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
-    <div style="margin-bottom:10rem" class="container content narrow">
-        <h1 style="margin-top:5rem" class="is-size-2">Lesson 1: Fingers and Keys</h1>
+    <div class="container content lesson">
+      <div class="box">
+        <h1 class="is-size-2">Lesson 1: Fingers and Keys</h1>
         <p class="parmar">
             <h2>The Keyboard</h2>
             A nice place to start learning Plover is with its most obvious feature - the keyboard.
@@ -35,7 +36,8 @@
             forefinger is responsible for the asterisk. The thumbs rest on their sides, rather than on their pads. But you can easily see that unlike
             QWERTY keyboards, none of your fingers will ever move very far from their home positions. This helps with the blazingly fast typing speeds.
         </p>
-        <router-link to="/lesson/1b" class="button is-primary is-rounded is-pulled-right" style="margin-top:1rem">Next</router-link>
+      </div>
+      <router-link to="/lesson/1b" class="button is-primary is-pulled-right" style="margin-top:1rem">Next</router-link>
     </div>
 </div>
 </template>
