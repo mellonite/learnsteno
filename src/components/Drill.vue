@@ -105,7 +105,7 @@ export default {
         if (!this.random) return this.drill.words
         // shuffle the array of words if random is selected
         else {
-            let words = this.drill.words.slice(0)
+            let words = this.drill.words.slice(0) // note that slice(0) is a cheap way to copy the array
             for (let i = words.length -1; i > 0; i--) {
                 let j = Math.floor(Math.random() * (i + 1));
                 [words[i], words[j]] = [words[j], words[i]];
@@ -125,7 +125,7 @@ export default {
   data () {
       return {
         // please read this: https://vuejs-templates.github.io/webpack/static.html
-        drill: require('../assets/drills/' + this.drillName + '.json'),
+        drill: require('../assets/practicedata/drills/' + this.drillName + '.json'),
         wordIndex: 0,
         input: '',
         wordErrors: 0,

@@ -124,7 +124,7 @@
 import NavBar from './Navbar.vue'
 
 export default {
-  name: 'Drills',
+  name: 'Lessons',
   components: {
       'navbar': NavBar
   }
