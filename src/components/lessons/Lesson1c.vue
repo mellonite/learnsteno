@@ -6,7 +6,7 @@
         <div class="column">
           <div class="box content">
             <h2>Stroking Your First Words</h2>
-            <p class="parmar">
+            <p>
               Now you're ready to start typing words. Have your NKRO keyboard in front of you, and activate the Plover software. Once you're set up, do the following steps:
             </p>
             <ul>
@@ -15,7 +15,7 @@
               <li> Rest your right middle finger on the <span class="stroke">P</span> key on the right half of the keyboard </li>
             </ul>
 
-            <p class="parmar">
+            <p>
               <img class="image" src="../../assets/img/Fig3.svg">
               When your fingers are in position, press them all down together, and release them.
             </p>

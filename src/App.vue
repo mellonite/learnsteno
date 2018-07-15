@@ -48,10 +48,6 @@ $link-focus-border: $primary;
   color: $white;
 }
 
-.parmar {
-  margin-top:1rem;
-}
-
 .container.page,
 .container.lesson,
 .container.narrow {
