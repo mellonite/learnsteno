@@ -11,7 +11,7 @@
 
             <div class="navbar-dropdown">
                 <router-link class="navbar-item" to="/practice/drills">Lesson Drills</router-link>
-                <router-link class="navbar-item" to="/practice/transcription/251-118436">Transcription</router-link>
+                <a class="navbar-item" v-on:click="navToTranscription">Transcription</a>
             </div>
         </div>
 
@@ -26,9 +26,22 @@
 
 <script>
 export default {
-  name: 'Navbar',
-  props: [
-    'page'
-  ]
+    name: 'Navbar',
+    props: [
+      'page'
+    ],
+    data () {
+        return {
+            transcriptions: [
+                '251-118436'
+            ]
+        }
+    },
+    methods: {
+        navToTranscription () {
+            this.$router.push('/practice/transcription/' +
+              this.transcriptions[Math.floor(Math.random()*this.transcriptions.length)])
+        }
+    }
 }
 </script>

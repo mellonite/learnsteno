@@ -6,7 +6,10 @@
         <progress class="progress is-primary" :value="progress" max="1"></progress>
         <!-- only render the drill if there are still words left -->
         <template v-if="sentenceIndex < transcription.sentences.length">
-            <button class="button is-info is-fullwidth" v-on:click="playAudio">{{ startTime == null ? 'Start' : 'Repeat Audio' }}</button>
+            <button class="button is-info is-fullwidth"
+                v-on:click="playAudio">{{ startTime == null ? 'Start' : 'Repeat Audio' }}
+                <font-awesome-icon style="margin-left: .3rem" class="fa-icon" v-bind:icon="startTime == null ? 'play' : 'redo'"></font-awesome-icon>
+            </button>
             <p style="min-height: 1.5rem; margin: .5rem" v-html="inputRender"></p>
             <textarea id="input" v-model="input" style="margin-top:1rem" class="textarea is-primary"></textarea>
             <!-- Options card -->
