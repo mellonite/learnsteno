@@ -5,7 +5,7 @@ import VueResource from 'vue-resource'
 import Buefy from 'buefy'
 import PouchDB from 'pouchdb-browser'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheck, faRedo, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faRedo, faPlay, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -16,7 +16,7 @@ Vue.config.productionTip = false
 // add pouchdb to vue
 Vue.prototype.$pouch = PouchDB('learnsteno')
 // add fontawesome
-library.add(faCheck, faGithub, faRedo, faPlay)
+library.add(faCheck, faGithub, faRedo, faPlay, faExclamationTriangle)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 

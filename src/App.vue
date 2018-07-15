@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <unsupported-banner/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import UnsupportedBanner from '@/components/UnsupportedBanner.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    'unsupported-banner': UnsupportedBanner
+  }
 }
 </script>
 
