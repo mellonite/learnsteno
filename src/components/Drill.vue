@@ -167,20 +167,27 @@ export default {
       saveData () {
           // we need to compare all our new data to see if it's a new best data
           // but only if there is existing data
-          if (Object.keys(this.dbDrillData).includes('time')) {
+          if (!Object.keys(this.dbDrillData).includes('time')) {
+              let drillData = {
+                  '_id': 'drill' + this.drillName,
+                  'drillErrors': Math.max(this.drillErrors, 0),
+                  'time': this.endTime - this.startTime,
+                  'wordsPerMinute': this.wordsPerMinute
+              }
+              this.$pouch.put(drillData)
+          } else if (isNewOverallBest()) {
               this.dbDrillData.drillErrors = Math.max(Math.min(this.drillErrors,this.dbDrillData.drillErrors),0)
               this.dbDrillData.time = Math.min(this.endTime - this.startTime, this.dbDrillData.time)
               this.dbDrillData.wordsPerMinute = Math.max(this.wordsPerMinute, this.dbDrillData.wordsPerMinute)
               this.$pouch.put(this.dbDrillData)
-          } else {
-            let drillData = {
-                '_id': 'drill' + this.drillName,
-                'drillErrors': Math.max(this.drillErrors, 0),
-                'time': this.endTime - this.startTime,
-                'wordsPerMinute': this.wordsPerMinute
-            }
-            this.$pouch.put(drillData)
+              this.$pouch.put(this.dbDrillData)
           }
+      },
+      isNewOverallBest() {
+          if (this.dbDrillData.drillErrors < this.drillErrors) return false
+          if (this.dbDrillData.wordsPerMinute < this.wordsPerMinute) return false
+          if (this.dbDrillData.time < this.endTime -this.startTime) return false
+          return true
       },
       formatDuration(timeInMS) {
           let minutes = Math.floor(timeInMS / 1000 / 60)
