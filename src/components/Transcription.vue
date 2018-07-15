@@ -127,7 +127,7 @@ export default {
       },
       isInputCorrect(input) {
           // a little premature optimization, return false if we don't have the same number of words
-          if (this.currentSentence[1].split(' ').length !== input.split(' ').length) return false
+          if (this.currentSentence[1].trim().split(' ').length !== input.split(' ').length) return false
 
           let correct = this.currentSentence[1].toUpperCase().replace(/[^a-zA-Z ]/, "")
           let attempt = input.trim().toUpperCase().replace(/[^a-zA-Z ]/, "")
