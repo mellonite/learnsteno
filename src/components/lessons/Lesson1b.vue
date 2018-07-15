@@ -1,7 +1,8 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
-    <div style="margin-bottom:10rem" class="container content narrow page">
+    <div class="container content lesson">
+
         <h1 class="is-size-2">Lesson 1: Fingers and Keys</h1>
         <p class="parmar">
             You're almost ready to start typing words, but there's a detail or two regarding the

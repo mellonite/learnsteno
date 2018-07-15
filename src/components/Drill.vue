@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar page=drills></navbar>
-    <div class="ui text container narrow page">
+    <div class="ui text container page">
         <h1 class="is-size-2">{{ drill.name }}</h1>
         <h2 class="is-size-5">{{ drill.description }}</h2>
         <progress class="progress is-primary" :value="progress" max="1"></progress>

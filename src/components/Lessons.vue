@@ -1,7 +1,7 @@
 <template>
 <div>
     <navbar page='lessons'></navbar>
-    <div class="container narrow page">
+    <div class="container page">
       <div class="columns">
         <div class="column">
           <div class="tile is-ancestor">
