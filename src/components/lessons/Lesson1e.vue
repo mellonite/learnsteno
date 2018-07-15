@@ -16,7 +16,7 @@
                 <router-link to="/lesson/1d" class="button is-primary is-rounded">Previous</router-link>
             </div>
             <div class="level-item is-pulled-right">
-                <router-link to="/drill/1a" class="button is-primary is-rounded">Next</router-link>
+                <router-link to="/practice/drill/1a" class="button is-primary is-rounded">Next</router-link>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@ export default new Router({
       component: Lessons
     },
     {
-      path: '/drills',
+      path: '/practice/drills',
       name: 'Drills',
       component: Drills
     },
@@ -37,7 +37,7 @@ export default new Router({
       component: About
     },
     {
-      path: '/drill/:drillName',
+      path: '/practice/drill/:drillName',
       name: 'Drill',
       component: Drill,
       props: true
