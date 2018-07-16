@@ -1,15 +1,17 @@
 <template>
 <div>
     <navbar page='practice'></navbar>
-    <div class="ui text container" style="max-width:50rem">
+    <div class="ui text container narrow">
         <h1 style="margin-top:7rem" class="is-size-2">Transcription Practice</h1>
         <progress class="progress is-primary" :value="progress" max="1"></progress>
         <!-- only render the drill if there are still words left -->
         <template v-if="sentenceIndex < transcription.sentences.length">
-            <button class="button is-info is-fullwidth"
+            <button class="button is-outlined is-primary is-fullwidth"
                 v-on:click="playAudio">{{ startTime == null ? 'Start' : 'Repeat Audio' }}
                 <font-awesome-icon style="margin-left: .3rem" class="fa-icon" v-bind:icon="startTime == null ? 'play' : 'redo'"></font-awesome-icon>
             </button>
+
+            <b-message v-if="showText" style="margin-top: 1rem">{{ currentSentence[1].toLowerCase() }}</b-message>
             <p style="min-height: 1.5rem; margin: .5rem" v-html="inputRender"></p>
             <textarea id="input" v-model="input" style="margin-top:1rem" class="textarea is-primary"></textarea>
             <!-- Options card -->
@@ -17,6 +19,7 @@
                 <div class="card-content">
                     <div class="content">
                         <b-checkbox v-model="showLayout">Show Plover Layout</b-checkbox>
+                        <b-checkbox v-model="showText">Show Text</b-checkbox>
                         <b-checkbox v-model="soundEffects">Sound Effects</b-checkbox>
                     </div>
                 </div>
@@ -97,6 +100,7 @@ export default {
         startTime: null,
         endTime: null,
         showLayout: false,
+        showText: false,
         soundEffects: true,
         correctSound: new Audio(require('../assets/audio/correct.ogg'))
       }
