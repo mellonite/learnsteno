@@ -79,10 +79,10 @@ export default {
         return sentences.map((s) => { return [new Audio(require('../assets/audio/transcription/' + s[0] + '.ogg')), s[1]]})
     },
     inputRender () {
-        let correctArray = this.currentSentence[1].toUpperCase().replace(/[^a-zA-Z ]/, "").split(' ')
-        let inputArray = this.input.split(' ')
+        let correctArray = this.currentSentence[1].toUpperCase().replace(/[^\w\s]/g, '').split(' ')
+        let inputArray = this.input.trim().split(' ')
         return inputArray.map((word, index) => {
-            if (word.toUpperCase().replace(/[^a-zA-Z ]/, "") == correctArray[index])
+            if (word.toUpperCase().replace(/[^\w\s]/g, '') == correctArray[index])
                 return word
             else return '<span style="background-color: hsl(348, 100%, 90%)">' + word + '</span>'
         }).join(' ')
@@ -134,10 +134,10 @@ export default {
       },
       isInputCorrect(input) {
           // a little premature optimization, return false if we don't have the same number of words
-          if (this.currentSentence[1].trim().split(' ').length !== input.split(' ').length) return false
+          if (this.currentSentence[1].trim().split(' ').length !== input.trim().split(' ').length) return false
 
-          let correct = this.currentSentence[1].toUpperCase().replace(/[^a-zA-Z ]/, "")
-          let attempt = input.trim().toUpperCase().replace(/[^a-zA-Z ]/, "")
+          let correct = this.currentSentence[1].toUpperCase().replace(/[^\w\s]/g, "")
+          let attempt = input.trim().toUpperCase().replace(/[^\w\s]/g, "")
           return attempt === correct
       }
   },
