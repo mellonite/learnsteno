@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Learn Steno
+
+Learn stenotype with plover.
 
 ## Available Scripts
 
