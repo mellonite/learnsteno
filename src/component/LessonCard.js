@@ -12,7 +12,7 @@ export default class LessonCard extends React.Component {
             {this.props.description}
           </p>
           <div className="level-item is-centered">
-            <Link to={`/lessons/${this.props.index}`} className="button is-primary">Start</Link>
+            <Link to={`/lesson-${this.props.index}`} className="button is-primary">Start</Link>
           </div>
         </div>
       </article>

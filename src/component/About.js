@@ -6,8 +6,8 @@ export default class About extends React.Component {
     return (
       <div>
         <Navbar page="about" />
-        <div class="container page content box">
-            <h1 class="is-size-2">About Learn Steno</h1>
+        <div className="container page content box">
+            <h1 className="is-size-2">About Learn Steno</h1>
             <p>
               Learn Steno was developed by Mel Griffin. It is open source and available on <a href="https://github.com/mellonite/learnsteno">github</a>.
             </p>
