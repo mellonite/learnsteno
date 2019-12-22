@@ -7,25 +7,43 @@ export default class Drill extends React.Component {
   constructor(props) {
     super(props);
     this.transcription = require('../assets/practicedata/transcription/' + this.props.match.params.transcriptionName + '.json');
+    this.transcriptionAudio = this.transcription.sentences.map((s) => { return [new Audio(require('../assets/audio/transcription/' + s[0] + '.ogg')), s[1]]});
     this.state = {
-      sentences: this.transcription.words,
-      currentSentence: this.drill.words[0],
-      progress: 0,
+      sentences: this.transcriptionAudio,
       sentenceIndex: 0,
+      currentSentence: this.transcriptionAudio[0],
+      progress: 0,
       input: '',
       showText: false,
       showLayout: false,
-      soundEffects: true
+      soundEffects: true,
+      soundPlayed: false
     }
     //this.startTime = null;
     //this.endTime = null;
     this.correctSound = new Audio(require('../assets/audio/correct.ogg'));
-    this.formUpdate = this.formUpdate.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.isInputCorrect = this.isInputCorrect.bind(this);
+    this.playSentence = this.playSentence.bind(this);
   }
 
   playSentence() {
     //this.startTime = new Date();
-    this.state.sentences[this.state.sentenceIndex][0].play()
+    this.state.sentences[this.state.sentenceIndex][0].play();
+    this.setState({
+      soundPlayed: true
+    });
+  }
+
+  isInputCorrect() {
+    // a little premature optimization, return false if we don't have the same number of words
+    if (this.state.currentSentence[1].trim().split(' ').length !== this.state.input.trim().split(' ').length) {
+      return false;
+    }
+
+    let correct = this.state.currentSentence[1].toUpperCase().replace(/[^\w\s]/g, "");
+    let attempt = this.state.input.trim().toUpperCase().replace(/[^\w\s]/g, "");
+    return attempt === correct;
   }
 
   componentDidMount() {
@@ -39,47 +57,27 @@ export default class Drill extends React.Component {
     */
   }
 
-  formUpdate(event) {
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
     this.setState({
-      input: event.target.value
+      [name]: value
     });
   }
 
   componentDidUpdate() {
-    if (this.state.input.trim() === this.state.currentWord[0])  {
-      if (this.state.wordIndex + 1 === this.state.words.length) {
-        this.endTime = new Date();
-        this.setState(function(state,props) {
-          return {
-            wordIndex: state.wordIndex + 1,
-            progress: ((state.wordIndex + 1) / state.words.length) * 100,
-            input: '',
-            drillErrors: state.drillErrors + Math.max(state.wordErrors,0),
-            wordErrors: -1 // errors are counted per word, reset wordErrors
-          }
-        });
-      } else {
-        this.setState(function(state, props) {
-          return {
-            currentWord: state.words[state.wordIndex + 1],
-            wordIndex: state.wordIndex + 1,
-            progress: ((state.wordIndex + 1) / state.words.length) * 100,
-            input: '',
-            drillErrors: state.drillErrors + Math.max(state.wordErrors,0),
-            wordErrors: -1 // errors are counted per word, reset wordErrors
-          }
-        });
-      }
-
-      if (this.state.soundEffects) {
-        this.correctSound.play();
-      }
-    } else if (this.input === '') {
-      this.setState(function(state, props){
+    if(this.isInputCorrect()) {
+      this.setState(function(state,props) {
         return {
-          wordErrors: state.wordErrors + 1
-        };
+          sentenceIndex: state.sentenceIndex + 1,
+          input: '',
+          progress: ((state.sentenceIndex+1) / state.sentences.length)  * 100,
+          currentSentence: state.sentences[state.sentenceIndex+1]
+        }
       });
+      this.correctSound.play();
     }
   }
 
@@ -88,44 +86,65 @@ export default class Drill extends React.Component {
       <div>
         <Navbar page="practice" />
         <div className="ui text container page">
-            <h1 className="is-size-2">{ this.drill.name }</h1>
-            <h2 className="is-size-5">{ this.drill.description }</h2>
+            <h1 className="is-size-2"> Transcription Practice </h1>
             <Progress className="progress is-primary" percent={this.state.progress} status="success" />
             {/* only render the drill if there are still words left */}
-            { this.sentenceIndex < this.transcription.sentences.length &&
+            { this.state.sentenceIndex < this.state.sentences.length &&
               <div>
-                <button class="button is-outlined is-primary is-fullwidth"
+                <button className="button is-outlined is-primary is-fullwidth"
                   onClick={this.playSentence}>
-                  { startTime == null ? 'Start' : 'Repeat Audio' }
-                  <font-awesome-icon style="margin-left: .3rem" class="fa-icon" onClick={startTime == null ? 'play' : 'redo'}></font-awesome-icon>
+                  { this.state.startTime == null ? 'Start' : 'Repeat Audio' }
                 </button>
                 <article className={`message ${this.state.showText ? "" : "is-hidden"}`}>
-                  <div class="message-body">
-                    { currentSentence[1].toLowerCase() }
+                  <div className="message-body">
+                    { this.state.currentSentence[1].toLowerCase() }
                   </div>
                 </article>
-                <textarea className="textarea is-primary is-small has-fixed-size" type="text" value={this.state.input} onChange={this.formUpdate}/>
-                {/* <-- Options card -->
-                <div class="card" style="width:35rem;margin-top:2rem">
+                <textarea className="textarea is-primary is-small has-fixed-size"
+                          name="input"
+                          type="text"
+                          value={this.state.input}
+                          onChange={this.handleInputChange}/>
+                {/* Options card */}
+                <div class="card">
                     <div class="card-content">
                         <div class="content">
-                            <b-checkbox v-model="showLayout">Show Plover Layout</b-checkbox>
-                            <b-checkbox v-model="showText">Show Text</b-checkbox>
-                            <b-checkbox v-model="soundEffects">Sound Effects</b-checkbox>
+                          <label class="checkbox">
+                            <input type="checkbox"
+                                   name="showLayout"
+                                   checked={this.state.showLayout}
+                                   onChange={this.handleInputChange}/>
+                            Show Plover Layout
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox"
+                                   name="showText"
+                                   checked={this.state.showText}
+                                   onChange={this.handleInputChange}/>
+                            Show Text
+                          </label>
+                          <label class="checkbox">
+                            <input type="checkbox"
+                                   name="soundEffects"
+                                   checked={this.soundEffects}
+                                   onChange={this.handleInputChange}/>
+                            Sound Effects
+                          </label>
                         </div>
                     </div>
-                    <div v-if="showLayout" class="card-image" style="padding:1rem">
-                        <img class="image" src="../assets/img/Fig1.svg">
-                    </div>
-                </div> */}
+                    { this.state.showLayout &&
+                      <div class="card-image">
+                          <img class="image" src="../assets/img/Fig1.svg"/>
+                      </div>
+                    }
+                </div>
               </div>
             }
             {/* render results when finished */}
-            { this.state.wordIndex >= this.drill.words.length && <DrillResults
+            { this.state.wordIndex >= this.state.sentences.length && <TranscriptResults
                                                                     startTime={this.startTime}
                                                                     endTime={this.endTime}
-                                                                    drillErrors={this.state.drillErrors}
-                                                                    words={this.state.words}/> }
+                                                                    sentences={this.state.sentences}/> }
         </div>
       </div>
     )
@@ -142,7 +161,7 @@ class TranscriptResults extends React.Component {
   }
 
   wordsPerMinute() {
-    return Math.round(this.props.words.length / ((this.props.endTime - this.props.startTime) / 1000 / 60));
+    return Math.round(this.props.sentences.length / ((this.props.endTime - this.props.startTime) / 1000 / 60));
   }
 
   render() {
@@ -154,12 +173,6 @@ class TranscriptResults extends React.Component {
                 <div>
                     <p className="heading">Words per minute</p>
                     <p className="title">{ this.wordsPerMinute() }</p>
-                </div>
-            </div>
-            <div className="level-item has-text-centered">
-                <div>
-                    <p className="heading">Missed strokes</p>
-                    <p className="title">{ this.props.drillErrors }</p>
                 </div>
             </div>
             <div className="level-item has-text-centered">

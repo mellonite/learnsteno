@@ -6,6 +6,7 @@ import Practice from './Practice';
 import DrillList from './DrillList';
 import Drill from './Drill';
 import Lesson from './Lesson';
+import Transcription from './Transcription';
 
 export default class App extends React.Component {
   render() {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
           <Route exact path="/practice/drills" component={DrillList} />
           <Route path="/practice/drill/:drillName" component={Drill} />
           <Route path="/lesson-:lessonIndex" component={Lesson} />
+          <Route path="/practice/transcription/:transcriptionName" component={Transcription} />
         </Switch>
       </div>
     );

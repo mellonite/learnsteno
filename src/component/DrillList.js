@@ -13,7 +13,7 @@ export default class DrillList extends React.Component {
   render() {
     return (
       <div>
-        <Navbar page="Practice" />
+        <Navbar page="practice" />
         <div className="container page">
           <div className="columns">
             <div className="column">

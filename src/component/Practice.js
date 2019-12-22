@@ -4,6 +4,23 @@ import Navbar from "./Navbar";
 import Scorecard from "./Scorecard";
 
 export default class Practice extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.transcriptions = [
+      "251-118436",
+      "6313-76958",
+      "6313-66129",
+      "5895-34622"
+    ]
+
+    this.navToTranscription = this.navToTranscription.bind(this);
+  }
+
+  navToTranscription(){
+    let randTrans = this.transcriptions[Math.floor(Math.random()*this.transcriptions.length)]
+    return "/practice/transcription/" + randTrans;
+  }
   render() {
     return (
       <div>
@@ -34,7 +51,7 @@ export default class Practice extends React.Component {
                       Note that this section is aimed at more advanced learners.
                   </p>
                   <div className="level-item is-centered">
-                    <button className="button is-primary">Start</button>
+                    <Link to={this.navToTranscription()}className="button is-primary">Start</Link>
                   </div>
                 </div>
               </article>

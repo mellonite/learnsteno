@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.8.0",
+    "bulma-tooltip": "^3.0.2",
     "node-sass": "^4.13.0",
     "npm": "^6.13.1",
     "react": "^16.12.0",

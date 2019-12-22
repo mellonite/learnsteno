@@ -107,12 +107,7 @@ export default class Drill extends React.Component {
             { this.state.wordIndex < this.drill.words.length &&
               <div>
                 <div className="has-text-centered">
-                    <h2 className="is-size-3 dotunder">{ this.state.currentWord[0] }</h2>
-                    {/*
-                    <tooltip type="is-black" position="is-right" label={`${this.state.currentWord[1]}`}>
-                        <h2 className="is-size-3 dotunder">{ this.state.currentWord[0] }</h2>
-                    </tooltip>
-                    */}
+                  <h2 className="is-size-3 dotunder has-tooltip-right" data-tooltip={`${this.state.currentWord[1]}`}>{ this.state.currentWord[0] }</h2>
                 </div>
                 <input className="input is-primary" type="text" value={this.state.input} onChange={this.formUpdate}/>
               </div>

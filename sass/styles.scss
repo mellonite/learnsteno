@@ -29,6 +29,7 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 @import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-tooltip/src/sass/index.sass";
 
 .dotunder {
   border-bottom: .1rem dashed #4a4a4a;
